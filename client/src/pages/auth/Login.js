@@ -16,6 +16,7 @@ import {
 import styles from "./auth.module.scss";
 import { GoogleLogin } from "@react-oauth/google";
 
+
 const initialState = {
   email: "",
   password: "",
@@ -69,7 +70,7 @@ const Login = () => {
   }, [isLoggedIn, isSuccess, dispatch, navigate, isError, twoFactor, email]);
 
   const googleLogin = async (credentialResponse) => {
-    console.log(credentialResponse.credential);
+   
     await dispatch(
       loginWithGoogle({ userToken: credentialResponse.credential })
     );

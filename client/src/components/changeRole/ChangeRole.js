@@ -47,7 +47,7 @@ const ChangeRole = ({ _id, email }) => {
       >
         <select value={userRole} onChange={(e) => setUserRole(e.target.value)}>
           <option value="">-- select --</option>
-          <option value="subscriber">Subscriber</option>
+          <option value="user">User</option>
           <option value="author">Author</option>
           <option value="admin">Admin</option>
           <option value="suspended">Suspended</option>

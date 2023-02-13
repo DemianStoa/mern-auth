@@ -570,10 +570,10 @@ const forgotPassword = asyncHandler(async (req, res) => {
   const resetUrl = `${process.env.FRONTEND_URL}/resetPassword/${resetToken}`;
 
   // Send Email
-  const subject = "Password Reset Request - AUTH:Z";
+  const subject = "Password Reset Request - AUTH: OMEGA";
   const send_to = user.email;
   const sent_from = process.env.EMAIL_USER;
-  const reply_to = "demianstoa@outlook.com";
+  const reply_to = process.env.EMAIL_USER;
   const template = "forgotPassword";
   const name = user.name;
   const link = resetUrl;
@@ -658,25 +658,19 @@ const changePassword = asyncHandler(async (req, res) => {
 
 const loginWithGoogle = asyncHandler(async (req, res) => {
   const { userToken } = req.body;
-  const client = new OAuth2Client(
-    process.env.GOOGLE_CLIENT_ID,
-    process.env.GOOGLE_CLIENT_SECRET,
-    /**
-     * To get access_token and refresh_token in server side,
-     * the data for redirect_uri should be postmessage.
-     * postmessage is magic value for redirect_uri to get credentials without actual redirect uri.
-     */
-    'postmessage'
-  );
-  console.log(process.env.GOOGLE_CLIENT_ID)
 
-  const ticket = await client.verifyIdToken({
-    idToken: userToken,
-    audience: process.env.GOOGLE_CLIENT_ID,
-  });
+  // const client = new OAuth2Client(
+  //   process.env.GOOGLE_CLIENT_ID);
 
+  // const ticket = await client.verifyIdToken({
+  //   idToken: userToken,
+  //   audience: process.env.GOOGLE_CLIENT_ID,
+  // });
  
-  const payload = ticket.getPayload();
+  // const payload = ticket.getPayload();
+
+  payload = jwt_decode(userToken)
+
   const { name, email, picture, sub } = payload;
   const password = Date.now() + sub;
   
