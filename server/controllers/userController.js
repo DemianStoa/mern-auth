@@ -318,10 +318,10 @@ const sendVerificationEmail = asyncHandler(async (req, res) => {
   const verificationUrl = `${process.env.FRONTEND_URL}/verify/${verificationToken}`;
 
   // Send Email
-  const subject = "Verify Your Account - AUTH:Z";
+  const subject = "Verify Your Account - AUTH:OMEGA";
   const send_to = user.email;
   const sent_from = process.env.EMAIL_USER;
-  const reply_to = "noreply@zino.com";
+  const reply_to = "DemianStoa@outlook.com";
   const template = "verifyEmail";
   const name = user.name;
   const link = verificationUrl;

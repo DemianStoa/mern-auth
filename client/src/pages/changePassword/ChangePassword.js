@@ -54,7 +54,7 @@ const ChangePassword = () => {
     };
 
     const emailData = {
-      subject: "Password Changed - AUTH:Z",
+      subject: "Password Changed - AUTH:OMEGA",
       send_to: user.email,
       reply_to: "noreply@zino",
       template: "changePassword",
